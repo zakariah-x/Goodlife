@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Phone, Mail } from "lucide-react";
+import { Phone, Mail, ShieldCheck } from "lucide-react";
+import { FacebookIcon, InstagramIcon, WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export function Footer() {
@@ -28,21 +29,26 @@ export function Footer() {
                   {SITE_CONFIG.shortName}
                 </span>
                 <span className="block text-xs font-semibold text-emerald-400">
-                  LLC • UAE
+                  LLC • UAE-Wide Scrap Buying
                 </span>
               </div>
             </Link>
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
-              UAE&apos;s trusted scrap car buyer. Free doorstep towing and same-day
-              cash payment across Dubai, Sharjah, Ajman, Abu Dhabi, Ras Al
-              Khaimah, Umm Al Quwain & Fujairah.
+              UAE&apos;s trusted vehicle salvage & scrap buyer. 100% free doorstep
+              flatbed towing and instant cash payout across Dubai, Sharjah, Abu
+              Dhabi, Ajman, Ras Al Khaimah, Umm Al Quwain & Fujairah.
             </p>
+
+            <div className="flex items-center gap-2 text-xs text-slate-400 pt-1">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>Certified UAE Auto Recycling & Scrap Disposal</span>
+            </div>
           </div>
 
           {/* Navigation Links */}
           <div className="lg:col-span-3">
             <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              Quick Links
+              Navigation
             </h4>
             <ul className="space-y-2.5 text-sm">
               <li>
@@ -62,7 +68,7 @@ export function Footer() {
               </li>
               <li>
                 <Link href="#gallery" className="hover:text-emerald-400 transition-colors">
-                  Recent Scrap Cars
+                  Recent Purchases
                 </Link>
               </li>
               <li>
@@ -76,8 +82,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#why-us" className="hover:text-emerald-400 transition-colors">
-                  Why Choose Us
+                <Link href="#faq" className="hover:text-emerald-400 transition-colors">
+                  Frequently Asked Questions
                 </Link>
               </li>
               <li>
@@ -88,19 +94,19 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact Details */}
-          <div className="lg:col-span-4 space-y-3">
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
+          {/* Contact Details & Official Socials */}
+          <div className="lg:col-span-4 space-y-4">
+            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-2">
               Direct Contact
             </h4>
             <ul className="space-y-3 text-sm">
               <li>
                 <a
                   href={SITE_CONFIG.phoneTel}
-                  className="flex items-center gap-2 hover:text-emerald-400 transition-colors"
+                  className="flex items-center gap-2.5 hover:text-emerald-400 transition-colors"
                 >
                   <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>{SITE_CONFIG.phone}</span>
+                  <span className="font-semibold text-white">{SITE_CONFIG.phone}</span>
                 </a>
               </li>
               <li>
@@ -108,44 +114,63 @@ export function Footer() {
                   href={SITE_CONFIG.whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors"
+                  className="flex items-center gap-2.5 text-emerald-400 hover:text-emerald-300 transition-colors"
                 >
-                  <svg className="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.26 2 11.5c0 1.96.57 3.8 1.56 5.37L2 22l5.3-1.39c1.5.82 3.21 1.27 4.7 1.27 5.52 0 10-4.26 10-9.5S17.52 2 12 2zm5.88 14.06c-.26.74-1.53 1.4-2.09 1.49-.56.1-1.26.14-2.04-.13-.47-.16-1.07-.35-1.85-.69-3.27-1.42-5.39-4.72-5.55-4.94-.16-.22-1.32-1.76-1.32-3.36s.83-2.38 1.13-2.7c.3-.32.65-.41.86-.41.21 0 .43 0 .62.01.2.01.47-.08.73.56.26.64.88 2.2.96 2.36.08.16.13.35.02.57-.11.22-.17.35-.33.54-.16.19-.34.43-.48.58-.16.17-.33.35-.14.67.19.32.84 1.38 1.8 2.24 1.24 1.11 2.29 1.46 2.62 1.62.33.16.53.14.73-.08.2-.22.84-.98 1.07-1.31.23-.33.45-.28.75-.17.3.11 1.89.89 2.22 1.05.33.16.55.24.63.37.08.13.08.77-.18 1.51z" />
-                  </svg>
+                  <WhatsAppIcon className="w-4 h-4 shrink-0" />
                   <span>WhatsApp: {SITE_CONFIG.phoneFormatted}</span>
                 </a>
               </li>
               <li>
                 <a
                   href={SITE_CONFIG.emailMailto}
-                  className="flex items-center gap-2 hover:text-emerald-400 transition-colors"
+                  className="flex items-center gap-2.5 hover:text-emerald-400 transition-colors"
                 >
                   <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>{SITE_CONFIG.email}</span>
                 </a>
               </li>
-              <li>
-                <a
-                  href={SITE_CONFIG.socials.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-pink-400 transition-colors"
-                >
-                  <span>📸 Instagram</span>
-                </a>
-              </li>
-              <li>
+            </ul>
+
+            {/* Official Social Media Icons */}
+            <div className="pt-2">
+              <span className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2.5">
+                Official Channels
+              </span>
+              <div className="flex items-center gap-3">
+                {/* Official Facebook Icon */}
                 <a
                   href={SITE_CONFIG.socials.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 hover:text-blue-400 transition-colors"
+                  aria-label="Official Facebook Page"
+                  className="w-9 h-9 rounded-xl bg-[#1877F2] hover:bg-[#166fe5] text-white flex items-center justify-center transition-all hover:scale-110 shadow-md"
                 >
-                  <span>👍 Facebook</span>
+                  <FacebookIcon className="w-4 h-4" />
                 </a>
-              </li>
-            </ul>
+
+                {/* Official Instagram Icon */}
+                <a
+                  href={SITE_CONFIG.socials.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Official Instagram Page"
+                  className="w-9 h-9 rounded-xl bg-gradient-to-tr from-purple-600 via-pink-600 to-amber-500 hover:opacity-95 text-white flex items-center justify-center transition-all hover:scale-110 shadow-md"
+                >
+                  <InstagramIcon className="w-4 h-4" />
+                </a>
+
+                {/* Official WhatsApp Icon */}
+                <a
+                  href={SITE_CONFIG.socials.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Official WhatsApp Support"
+                  className="w-9 h-9 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white flex items-center justify-center transition-all hover:scale-110 shadow-md"
+                >
+                  <WhatsAppIcon className="w-4 h-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 

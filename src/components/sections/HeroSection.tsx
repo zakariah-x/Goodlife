@@ -2,8 +2,19 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { Phone } from "lucide-react";
+import {
+  Phone,
+  User,
+  MapPin,
+  Car,
+  FileCheck2,
+  ShieldCheck,
+  Zap,
+  Star,
+  CheckCircle2,
+} from "lucide-react";
 import { ParticleCanvas } from "@/components/ui/ParticleCanvas";
+import { WhatsAppIcon } from "@/components/ui/BrandIcons";
 import { SITE_CONFIG, UAE_LOCATIONS, CAR_CONDITIONS } from "@/lib/constants";
 
 const SLIDES = [
@@ -70,43 +81,74 @@ export function HeroSection() {
       </div>
 
       {/* Dark Modern Overlay */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-r from-slate-950/95 via-slate-950/85 to-slate-900/75 dark:from-slate-950/95 dark:via-slate-950/90 dark:to-slate-900/80" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-slate-950/95 via-slate-950/90 to-slate-900/80" />
 
       {/* Ambient Particle Canvas */}
       <ParticleCanvas />
 
       {/* Hero Content Grid */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full grid lg:grid-cols-12 gap-12 items-center">
-        {/* Left Column: Heading, Badges, CTAs */}
+        {/* Left Column: Heading, Trust Badges, CTAs */}
         <div className="lg:col-span-7 space-y-6 text-left">
-          {/* UAE Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md">
-            <span>📍</span>
-            <span>Serving All Emirates Across the UAE</span>
+          {/* Top Rating & Service Badge */}
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs sm:text-sm font-semibold tracking-wide backdrop-blur-md">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>Serving All 7 UAE Emirates 24/7</span>
+            </div>
+
+            <div className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs font-semibold backdrop-blur-md">
+              <div className="flex text-amber-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 fill-current" />
+                ))}
+              </div>
+              <span>4.9 / 5 Rating</span>
+            </div>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-tight leading-[1.15]">
-            Instant Cash for{" "}
-            <span className="text-gradient">Scrap & Junk Cars</span> Across the UAE
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-tight leading-[1.12]">
+            Sell Your Scrap, Junk & Accidental Car for{" "}
+            <span className="text-gradient">Instant Cash</span> in UAE
           </h1>
 
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl font-normal leading-relaxed">
-            We buy <strong>Junk, Damaged, Accident Cars</strong> &{" "}
-            <strong>Expired Mulkiya / Non-Running Vehicles</strong> across all UAE
-            Emirates. Free doorstep towing & instant cash payment on pickup.
+            We purchase all types of vehicles across Sharjah, Dubai, Abu Dhabi,
+            Ajman & all Emirates. Guaranteed highest payout, 100% free doorstep
+            recovery towing, and complete paperwork assistance.
           </p>
 
-          {/* Quick Value Pills */}
-          <div className="flex flex-wrap gap-2.5 pt-1">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white/10 text-white text-xs sm:text-sm font-medium backdrop-blur-sm border border-white/10">
-              ⚡ <span>Top Cash Offer</span>
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white/10 text-white text-xs sm:text-sm font-medium backdrop-blur-sm border border-white/10">
-              🚛 <span>Free UAE Towing</span>
-            </span>
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-white/10 text-white text-xs sm:text-sm font-medium backdrop-blur-sm border border-white/10">
-              💵 <span>Same-Day Cash</span>
-            </span>
+          {/* Value Guarantee Pills */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+            <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md">
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                <Zap className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="block text-xs font-bold text-white">Top Cash Offer</span>
+                <span className="block text-[11px] text-slate-400">Guaranteed Valuation</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md">
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                <Car className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="block text-xs font-bold text-white">Free Doorstep Towing</span>
+                <span className="block text-[11px] text-slate-400">Zero Pickup Fees</span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2.5 p-2.5 rounded-xl bg-white/[0.06] border border-white/10 backdrop-blur-md">
+              <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                <FileCheck2 className="w-4 h-4" />
+              </div>
+              <div>
+                <span className="block text-xs font-bold text-white">Instant Payment</span>
+                <span className="block text-[11px] text-slate-400">Cash on Handover</span>
+              </div>
+            </div>
           </div>
 
           {/* Call to Actions */}
@@ -117,121 +159,152 @@ export function HeroSection() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl btn-whatsapp-brand text-white font-bold text-sm sm:text-base shadow-lg"
             >
-              <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.26 2 11.5c0 1.96.57 3.8 1.56 5.37L2 22l5.3-1.39c1.5.82 3.21 1.27 4.7 1.27 5.52 0 10-4.26 10-9.5S17.52 2 12 2zm5.88 14.06c-.26.74-1.53 1.4-2.09 1.49-.56.1-1.26.14-2.04-.13-.47-.16-1.07-.35-1.85-.69-3.27-1.42-5.39-4.72-5.55-4.94-.16-.22-1.32-1.76-1.32-3.36s.83-2.38 1.13-2.7c.3-.32.65-.41.86-.41.21 0 .43 0 .62.01.2.01.47-.08.73.56.26.64.88 2.2.96 2.36.08.16.13.35.02.57-.11.22-.17.35-.33.54-.16.19-.34.43-.48.58-.16.17-.33.35-.14.67.19.32.84 1.38 1.8 2.24 1.24 1.11 2.29 1.46 2.62 1.62.33.16.53.14.73-.08.2-.22.84-.98 1.07-1.31.23-.33.45-.28.75-.17.3.11 1.89.89 2.22 1.05.33.16.55.24.63.37.08.13.08.77-.18 1.51z" />
-              </svg>
+              <WhatsAppIcon className="w-5 h-5" />
               <span>Get Free Cash Offer</span>
             </a>
 
             <a
               href={SITE_CONFIG.phoneTel}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm sm:text-base border border-white/20 backdrop-blur-sm transition-all"
+              className="inline-flex items-center gap-2.5 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-sm sm:text-base border border-white/20 backdrop-blur-sm transition-all"
             >
-              <Phone className="w-5 h-5 text-emerald-400" />
+              <Phone className="w-4 h-4 text-emerald-400" />
               <span>Call {SITE_CONFIG.phone}</span>
             </a>
           </div>
         </div>
 
-        {/* Right Column: Instant Valuation Form Card */}
+        {/* Right Column: Premium Car Valuation Widget */}
         <div id="valuation" className="lg:col-span-5 scroll-mt-28">
-          <div className="glass-panel p-6 sm:p-8 bg-slate-900/85 dark:bg-slate-900/90 border border-emerald-500/30 text-white shadow-2xl rounded-2xl">
-            <div className="mb-5 text-center">
-              <h2 className="text-2xl font-heading font-bold text-white">
-                Free Car Valuation
+          <div className="glass-panel p-6 sm:p-7 bg-slate-900/90 border border-emerald-500/30 text-white shadow-2xl rounded-2xl relative">
+            {/* Header Badge */}
+            <div className="mb-5 text-center pb-4 border-b border-slate-800">
+              <span className="inline-block px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-1.5">
+                ⚡ 15-Minute Cash Estimate
+              </span>
+              <h2 className="text-2xl font-heading font-black text-white">
+                Instant Car Valuation
               </h2>
-              <p className="text-xs sm:text-sm text-slate-300 mt-1">
-                Get an instant cash offer on WhatsApp in 2 minutes
+              <p className="text-xs text-slate-400 mt-1">
+                Enter your car details to get an immediate cash quote on WhatsApp
               </p>
             </div>
 
             <form onSubmit={handleFormSubmit} className="space-y-4">
+              {/* Name */}
               <div>
                 <label className="block text-xs font-semibold text-slate-300 mb-1">
-                  Your Name <span className="text-emerald-400">*</span>
+                  Full Name <span className="text-emerald-400">*</span>
                 </label>
-                <input
-                  type="text"
-                  required
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Enter your full name"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-sm text-white placeholder-slate-400 outline-none transition-all"
-                />
+                <div className="relative">
+                  <User className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+                  <input
+                    type="text"
+                    required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Enter your name"
+                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-sm text-white placeholder-slate-400 outline-none transition-all"
+                  />
+                </div>
               </div>
 
+              {/* Phone + UAE Location */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 mb-1">
-                    WhatsApp Number <span className="text-emerald-400">*</span>
+                    WhatsApp Phone <span className="text-emerald-400">*</span>
                   </label>
-                  <input
-                    type="tel"
-                    required
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="0588900019"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-sm text-white placeholder-slate-400 outline-none transition-all"
-                  />
+                  <div className="relative">
+                    <Phone className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+                    <input
+                      type="tel"
+                      required
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="058 890 0019"
+                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-sm text-white placeholder-slate-400 outline-none transition-all"
+                    />
+                  </div>
                 </div>
 
                 <div>
                   <label className="block text-xs font-semibold text-slate-300 mb-1">
-                    Your UAE Location
+                    UAE Location
                   </label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+                    <select
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                      className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-sm text-white outline-none transition-all"
+                    >
+                      {UAE_LOCATIONS.map((loc) => (
+                        <option key={loc} value={loc} className="bg-slate-900 text-white">
+                          {loc}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              {/* Car Model */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  Car Make, Model & Year
+                </label>
+                <div className="relative">
+                  <Car className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
+                  <input
+                    type="text"
+                    value={carModel}
+                    onChange={(e) => setCarModel(e.target.value)}
+                    placeholder="e.g. Toyota Prado 2014, Honda Civic"
+                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-sm text-white placeholder-slate-400 outline-none transition-all"
+                  />
+                </div>
+              </div>
+
+              {/* Condition */}
+              <div>
+                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                  Vehicle Condition
+                </label>
+                <div className="relative">
+                  <CheckCircle2 className="absolute left-3.5 top-3 w-4 h-4 text-slate-400" />
                   <select
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-sm text-white outline-none transition-all"
+                    value={condition}
+                    onChange={(e) => setCondition(e.target.value)}
+                    className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-sm text-white outline-none transition-all"
                   >
-                    {UAE_LOCATIONS.map((loc) => (
-                      <option key={loc} value={loc} className="bg-slate-900 text-white">
-                        {loc}
+                    {CAR_CONDITIONS.map((cond) => (
+                      <option key={cond} value={cond} className="bg-slate-900 text-white">
+                        {cond}
                       </option>
                     ))}
                   </select>
                 </div>
               </div>
 
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
-                  Car Make, Model & Year
-                </label>
-                <input
-                  type="text"
-                  value={carModel}
-                  onChange={(e) => setCarModel(e.target.value)}
-                  placeholder="e.g. Toyota Camry 2012 / Nissan Sunny"
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-sm text-white placeholder-slate-400 outline-none transition-all"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
-                  Car Condition
-                </label>
-                <select
-                  value={condition}
-                  onChange={(e) => setCondition(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-800/80 border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-sm text-white outline-none transition-all"
-                >
-                  {CAR_CONDITIONS.map((cond) => (
-                    <option key={cond} value={cond} className="bg-slate-900 text-white">
-                      {cond}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
               <button
                 type="submit"
                 className="w-full py-3.5 px-4 rounded-xl btn-primary-emerald font-bold text-sm sm:text-base flex items-center justify-center gap-2 mt-2"
               >
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.26 2 11.5c0 1.96.57 3.8 1.56 5.37L2 22l5.3-1.39c1.5.82 3.21 1.27 4.7 1.27 5.52 0 10-4.26 10-9.5S17.52 2 12 2zm5.88 14.06c-.26.74-1.53 1.4-2.09 1.49-.56.1-1.26.14-2.04-.13-.47-.16-1.07-.35-1.85-.69-3.27-1.42-5.39-4.72-5.55-4.94-.16-.22-1.32-1.76-1.32-3.36s.83-2.38 1.13-2.7c.3-.32.65-.41.86-.41.21 0 .43 0 .62.01.2.01.47-.08.73.56.26.64.88 2.2.96 2.36.08.16.13.35.02.57-.11.22-.17.35-.33.54-.16.19-.34.43-.48.58-.16.17-.33.35-.14.67.19.32.84 1.38 1.8 2.24 1.24 1.11 2.29 1.46 2.62 1.62.33.16.53.14.73-.08.2-.22.84-.98 1.07-1.31.23-.33.45-.28.75-.17.3.11 1.89.89 2.22 1.05.33.16.55.24.63.37.08.13.08.77-.18 1.51z" />
-                </svg>
-                <span>Get WhatsApp Cash Offer</span>
+                <WhatsAppIcon className="w-5 h-5" />
+                <span>Get WhatsApp Cash Quote</span>
               </button>
+
+              <div className="flex items-center justify-center gap-4 text-[11px] text-slate-400 pt-2">
+                <span className="flex items-center gap-1">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> No Obligation
+                </span>
+                <span>•</span>
+                <span className="flex items-center gap-1">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> 100% Free
+                </span>
+                <span>•</span>
+                <span>🔒 Privacy Protected</span>
+              </div>
             </form>
           </div>
         </div>
